@@ -22,3 +22,14 @@ function calcularTotalaPagar(monto, tasa, plazoAnios){
     let interes = calcularInteresSimple(monto, tasa, plazoAnios);
     return interes + monto + 100;
 }
+
+function calcularCuotaMensual(monto, tasa, plazoAnios){
+    let total = calcularTotalaPagar(monto, tasa, plazoAnios);
+    return total / (plazoAnios * 12);
+}
+
+function analizarCredito(montoDisponible, monto, tasa, plazoAnios){
+    let capacidad = calcularCapacidadPago(montoDisponible);
+    let cuota = calcularCuotaMensual(monto, tasa, plazoAnios);
+    return capacidad > cuota;
+}

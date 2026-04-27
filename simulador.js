@@ -36,7 +36,23 @@ function calcular(){
     spninteres.textContent = interes;
 
     let total = calcularTotalaPagar(monto , tasa , plazo);
-    let spntotal = document.getElementById("spnTotalPagar");
+    let spntotal = document.getElementById("spnTotalPrestamo");
     spntotal.textContent = total;
+
+    let cuota =  calcularCuotaMensual(monto, tasa, plazo);
+
+    let cuotasrc = document.getElementById("spnCuotaMensual");
+    cuotasrc.textContent = cuota;
+
+    let analizar = analizarCredito(saldofinal, monto, tasa, plazo)
+    let status= document.getElementById("spnEstadoCredito");
+    if (analizar){
+    status.textContent = "APROBADO ✅";
+    status.className = "aprobado";
+    } 
+    else {
+    status.textContent = "RECHAZADO ❌";
+    status.className = "rechazado";
+    }
 
 }   
