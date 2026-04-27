@@ -1,70 +1,211 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f6f8;
+/* RESET */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-.container {
-    width: 400px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+/* VARIABLES (estilo empresa) */
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --success: #16a34a;
+    --danger: #dc2626;
+    --bg-dark: #0f172a;
+    --bg-gradient: linear-gradient(135deg, #0f172a, #1e293b);
+    --card: #ffffff;
+    --text: #1e293b;
+    --subtext: #64748b;
+    --border: #e2e8f0;
 }
 
+/* FONDO */
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: var(--bg-gradient);
+    padding: 20px;
+    color: var(--text);
+}
+
+/* CONTENEDOR */
+.container {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    background: var(--card);
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    animation: fadeIn 0.5s ease;
+}
+
+/* ANIMACION */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+/* TITULOS */
 h1 {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 22px;
+    color: var(--text);
 }
 
 h2 {
     margin-top: 20px;
-    font-size: 18px;
+    font-size: 15px;
+    color: var(--subtext);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 5px;
 }
 
+/* LABELS */
 label {
     display: block;
-    margin-top: 10px;
-    font-weight: bold;
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: 600;
 }
 
+/* INPUTS */
 input {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     margin-top: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 5px rgba(37,99,235,0.4);
+    outline: none;
+}
+
+/* RESULTADOS */
+.resultado {
+    background: #f8fafc;
+    border-left: 4px solid var(--primary);
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 12px;
 }
 
 p {
-    margin-top: 10px;
+    margin-top: 6px;
+    font-size: 14px;
 }
 
 span {
     font-weight: bold;
-    color: #2c3e50;
 }
 
+/* ESTADO */
+#spnEstadoCredito {
+    display: block;
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.aprobado {
+    color: var(--success);
+}
+
+.rechazado {
+    color: var(--danger);
+}
+
+/* BOTONES */
 .buttons {
     margin-top: 20px;
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
 }
 
 button {
-    width: 48%;
-    padding: 10px;
+    flex: 1;
+    padding: 12px;
     border: none;
-    border-radius: 5px;
-    background-color: #3498db;
+    border-radius: 8px;
+    background: var(--primary);
     color: white;
     font-weight: bold;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 button:hover {
-    background-color: #2980b9;
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* LOGOS */
+.logo {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 600px;
+    opacity: 0.08;
+}
+
+.logo.izquierda {
+    left: 10px;
+}
+
+.logo.derecha {
+    right: 10px;
+}
+
+/* 📱 MOBILE */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+        border-radius: 12px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    input {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    button {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .logo {
+        display: none;
+    }
+}
+
+/* 📲 TABLET */
+@media (min-width: 768px) {
+    .container {
+        max-width: 550px;
+    }
+}
+
+/* 💻 ESCRITORIO */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 650px;
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
 }
